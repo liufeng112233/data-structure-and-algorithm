@@ -5,7 +5,7 @@ def hanoi(n, a, b, c):  # 汉诺递推公式：h(x)=2h(x-1)+1
         hanoi(n - 1, b, a, c)
 
 
-hanoi(64, 'A', 'B', 'C')
+hanoi(4, 'A', 'B', 'C')
 
 def linear_search(li, val):  # 时间复杂度O(n)
     for ind, v in enumerate(li):
@@ -15,11 +15,11 @@ def linear_search(li, val):  # 时间复杂度O(n)
             return None
 
 
-def binary_search(li, val):
+def binary_search(li, val):  # 二分查找
     left = 0
     right = len(li) - 1
     while left <= right:  # 说明候选区还有数据
-        mid = (left + right) // 2
+        mid = (left + right) // 2  # 整除
         if li[mid] == val:
             return mid
         elif li[mid] > val:  # mid的值在左侧
