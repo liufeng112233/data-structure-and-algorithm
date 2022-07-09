@@ -1,3 +1,5 @@
+from cal_time import *
+@cal_time
 def hanoi(n, a, b, c):  # 汉诺递推公式：h(x)=2h(x-1)+1
     if n > 0:
         hanoi(n - 1, a, c, b)
@@ -6,7 +8,7 @@ def hanoi(n, a, b, c):  # 汉诺递推公式：h(x)=2h(x-1)+1
 
 
 hanoi(4, 'A', 'B', 'C')
-
+@cal_time
 def linear_search(li, val):  # 时间复杂度O(n)
     for ind, v in enumerate(li):
         if v == val:
@@ -14,8 +16,8 @@ def linear_search(li, val):  # 时间复杂度O(n)
         else:
             return None
 
-
-def binary_search(li, val):  # 二分查找
+@cal_time
+def binary_search(li, val):  # 二分查找 复杂度log(n)
     left = 0
     right = len(li) - 1
     while left <= right:  # 说明候选区还有数据
