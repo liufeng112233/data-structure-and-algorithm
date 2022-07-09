@@ -19,6 +19,7 @@ bubble_sort(li)
 print(li)
 
 
+# 选择排序
 def select_sort_simple(li):
     li_new = []
     for i in range(len(li)):
@@ -56,6 +57,8 @@ def insert_sort(li):  # 插入排序 O(n^2)
 """
     快递排序
 """
+
+
 def partition(li, left, right):
     '''
 
@@ -69,17 +72,27 @@ def partition(li, left, right):
         while left < right and li[right] >= tmp:  # 从右面找比tmp小的数
             right -= 1  # 往左走一步
         li[left] = li[right]  # 把右边的值写到左边空位上
-        # print(li, 'right')
+        print(li, 'right')
         while left < right and li[left] <= tmp:
             left += 1
         li[right] = li[left]  # 把左边的值写到右边空位上
-        # print(li, 'left')
+        print(li, 'left')
     li[left] = tmp  # 把tmp归位
+    print("最终结果   {}".format(li))
     return left
 
 
 def quick_sort(data, left, right):
-    if left < right: # 至少两个元素
+    if left < right:  # 至少两个元素
         mid = partition(data, left, right)
+        print("划分子列表  {}".format(data))
         quick_sort(data, left, mid - 1)
-        quick_sort(data.mid + 1, right)
+        print("左侧列表  {}".format(data))
+        quick_sort(data, mid + 1, right)
+        print("右侧列表  {}".format(data))
+
+
+li = [5, 7, 4, 6, 3, 1, 2, 9, 8, 10]
+partition(li, 0, len(li) - 1)
+quick_sort(li, 0, len(li) - 1)
+import copy
