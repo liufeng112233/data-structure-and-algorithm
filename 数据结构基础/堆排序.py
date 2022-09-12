@@ -11,10 +11,10 @@ def sift(li, low, high):
     :return:
     """
     i = low
-    j = 2 * i + 1  # 左孩子
+    j = 2 * i + 1  # 右孩子
     tmp = li[low]  # 将堆顶保存
     while j <= high:  # 只要j位置有界
-        if j + 1 < +high and li[j + 1] > li[j]:  # 右孩子较大且有界
+        if j + 1 < +high and li[j] < li[j + 1]:  # 右孩子较大且有界
             j = j + 1  # j指向右孩子
         if li[j] > tmp:
             li[i] = li[j]
