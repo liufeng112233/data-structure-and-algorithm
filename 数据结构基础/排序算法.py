@@ -1,22 +1,32 @@
-# import random
-#
-#
-# # 冒泡排序
-# def bubble_sort(li):
-#     for i in range(len(li) - 1):  # 定义趟数
-#         exchange = False  # 添加标志位，主要是解决无序区也自然有序的情况[9,8,7,1,2,4,5,6]
-#         for j in range(len(li) - i - 1):
-#             if li[j] < li[j + 1]:  # 降序<，升序>
-#                 li[j], li[j + 1] = li[j + 1], li[j]  # 两个数交换位置
-#                 exchange = True
-#         if not exchange:
-#             return
-#
-#
-# li = [random.randint(0, 10000) for i in range(10)]
-# print(li)
-# bubble_sort(li)
-# print(li)
+# 冒泡排序
+def bubble_sort(li):
+    for i in range(len(li) - 1):  # 定义趟数
+        exchange = False  # 添加标志位，主要是解决无序区也自然有序的情况[9,8,7,1,2,4,5,6]
+        for j in range(len(li) - i - 1):
+            if li[j] < li[j + 1]:  # 降序<，升序>
+                li[j], li[j + 1] = li[j + 1], li[j]  # 两个数交换位置
+                exchange = True
+        if not exchange:
+            return
+
+# 冒泡排序主要注意无序区的关系
+def maopao_sort(li):
+    L = len(li)
+    for i in range(L - 1):
+        changge = False
+        for j in range(L - i - 1):
+            if li[j + 1] < li[j]:
+                li[j], li[j + 1] = li[j + 1], li[j]
+                changge = True
+        if not changge:
+            return
+
+import random
+
+li = [random.randint(0, 10000) for i in range(10)]
+print(li)
+maopao_sort(li)
+print(li)
 #
 #
 # # 选择排序
@@ -54,25 +64,25 @@
 #         print(li)
 #
 #
-# #### 折半排序：不使用嵌套函数，直接采用函数封装API的方式
-# def insert_half_sort(li):
-#     length = len(li)
-#     print(li)
-#     for i in range(1, length):
-#         waitting_insert_key = li[i]
-#         low, high = 0, i - 1
-#         while low <= high:  # 这里是折半排序的序号处理方式
-#             mid = (low + high) // 2
-#             if li[mid] > waitting_insert_key:  # 中间数值还在low的一边
-#                 high = mid - 1
-#             else:
-#                 low = mid + 1
-#         j = i - 1
-#         while j >= high + 1:
-#             li[j + 1] = li[j]
-#             j = j - 1
-#         li[high + 1] = waitting_insert_key
-#         print(li)
+#### 折半排序：不使用嵌套函数，直接采用函数封装API的方式
+def insert_half_sort(li):
+    length = len(li)
+    print(li)
+    for i in range(1, length):
+        waitting_insert_key = li[i]
+        low, high = 0, i - 1
+        while low <= high:  # 这里是折半排序的序号处理方式
+            mid = (low + high) // 2
+            if li[mid] > waitting_insert_key:  # 中间数值还在low的一边
+                high = mid - 1
+            else:
+                low = mid + 1
+        j = i - 1
+        while j >= high + 1:
+            li[j + 1] = li[j]
+            j = j - 1
+        li[high + 1] = waitting_insert_key
+        print(li)
 #
 #
 # """
@@ -234,11 +244,11 @@ print(li)
 """
 
 
-# 一直都是循环处理。依次先按照个位、十位依次排序，每次处理钱都是重新定义的列表
+# 一直都是循环处理。依次先按照个位、十位依次排序，每次处理钱都是重新定义的列表，复杂度O(kn)
 def radix_sort(li):
     max_num = max(li)  # 最大值维数确定循环次数
     it = 0
-    while 10 ** it <= max_num:
+    while 10 ** it <= max_num:   # K表示循环的次数
         buckets = [[] for _ in range(10)]
         for var in li:
             digit = (var // 10 ** it) % 10
@@ -260,3 +270,5 @@ random.shuffle(li)
 li2 = np.array(li)
 radix_sort(li)
 print(li)
+
+# 技术排序按照关键字排序

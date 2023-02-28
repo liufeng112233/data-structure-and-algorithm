@@ -1,4 +1,6 @@
 from cal_time import *
+
+
 @cal_time
 def hanoi(n, a, b, c):  # 汉诺递推公式：h(x)=2h(x-1)+1
     if n > 0:
@@ -8,6 +10,8 @@ def hanoi(n, a, b, c):  # 汉诺递推公式：h(x)=2h(x-1)+1
 
 
 hanoi(4, 'A', 'B', 'C')
+
+
 @cal_time
 def linear_search(li, val):  # 时间复杂度O(n)
     for ind, v in enumerate(li):
@@ -15,6 +19,7 @@ def linear_search(li, val):  # 时间复杂度O(n)
             return ind
         else:
             return None
+
 
 @cal_time
 def binary_search(li, val):  # 二分查找 复杂度log(n)
@@ -35,6 +40,21 @@ def binary_search(li, val):  # 二分查找 复杂度log(n)
 li = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 print(binary_search(li, 3))
 
-
 from sklearn.metrics import classification_report
 import torch
+
+# 主要是移动中间值，缩减左右数据下标
+def Binary_search(li, val):
+    L = len(li)
+    left = 0
+    right = L - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if li[mid] == val:
+            return mid
+        if li[mid] > val:
+            right = mid - 1
+        if li[mid] < val:
+            left = mid + 1
+    else:
+        return None
