@@ -39,18 +39,18 @@ def select_sort_simple(li):
     return li_new
 #
 #
-def selcet_sort(li):
-    for i in range(len(li) - 1):
+def selcet_sort(li,len1):
+    for i in range(len1-1):
         min_loc = i
-        for j in range(i+1, len(li)):
-            if li[j] < li[min_loc]:
+        for j in range(i+1, len1):
+            if li[j] > li[min_loc]:
                 min_loc = j
         li[i], li[min_loc] = li[min_loc], li[i]
         print(li)
 #
 #
-# li = [3, 2, 4, 1, 5, 6, 7, 9]
-# selcet_sort(li)
+li = [1,2,4,3]
+selcet_sort(li,2)
 #
 #
 def insert_sort(li):  # 插入排序 O(n^2)
@@ -63,7 +63,7 @@ def insert_sort(li):  # 插入排序 O(n^2)
         li[j + 1] = temp
         print(li)
 
-#
+
 #### 折半排序：不使用嵌套函数，直接采用函数封装API的方式
 def insert_half_sort(li):
     length = len(li)
