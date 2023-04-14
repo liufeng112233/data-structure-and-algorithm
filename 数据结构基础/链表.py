@@ -2,7 +2,7 @@
 # @time :2023/2/13 9:56
 # @Project: data-structure-and-algorithm
 # @Author : 刘风
-# @File : 链表.py
+# @File : 链表篇.py
 # @Software :PyCharm
 class Node:
     def __init__(self,item):

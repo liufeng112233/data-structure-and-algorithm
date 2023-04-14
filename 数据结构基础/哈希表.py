@@ -7,7 +7,7 @@
 
 class LinkList:   # 链表存储
     class Node:
-        def __init__(self, item=None):  # 链表
+        def __init__(self, item=None):  # 链表篇
             self.item = item
 
             self.next = None
